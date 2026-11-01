@@ -77,3 +77,12 @@ footer{background:linear-gradient(180deg,#0b1220,#05070a)}
 .band-sm .hero-tagline{font-size:1.25rem;margin-top:14px}
 .band-sm .hero-rule{margin-top:20px;width:min(240px,60%)}
 @media(max-width:600px){.hero-tagline br{display:none}.hero-tagline{font-size:1.2rem}}
+
+/* Schedule a Demo */
+.nav a.nav-cta{background:#1e88ff;color:#fff;padding:8px 16px;border-radius:4px;text-decoration:none}
+.nav a.nav-cta:hover{background:#000;color:#fff}
+.hero-cta{display:inline-block;margin-top:26px;background:linear-gradient(90deg,#0b4fb3,#1e88ff,#6fd0ff);color:#fff;font-family:Poppins,sans-serif;font-weight:600;font-size:1.05rem;padding:14px 32px;border-radius:4px;text-decoration:none;box-shadow:0 6px 20px rgba(30,136,255,.35)}
+.hero-cta:hover{filter:brightness(1.08)}
+.form select{font:inherit;font-family:'Rubik',sans-serif;font-size:1rem;padding:12px 14px;border:1px solid #c9d2df;border-radius:4px;background:#fff;color:var(--black);width:100%}
+.form-err{color:#b00020;margin:0;font-size:.95rem}
+.demo-ok{margin-top:32px;text-align:left}.demo-ok h2{margin:0 0 8px;color:#0b4fb3}

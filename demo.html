@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Schedule a Demo | VersaNext</title>
+<meta name="description" content="Schedule a free demo and see an app built around your business.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Rubik:ital,wght@0,400;0,500;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar"></div>
+<header class="nav">
+  <nav aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="security.html">Security</a>
+    <a href="contact.html">Contact Us</a>
+    <a class="nav-cta" href="demo.html" aria-current="page">Schedule a Demo</a>
+  </nav>
+</header>
+<main>
+  <section class="band band-sm">
+    <div class="band-inner">
+      <a class="logo-card" href="index.html"><img class="logo" src="assets/logo.svg" alt="VersaNext (VNXT)" width="1060" height="392"></a>
+      <span class="hero-rule" aria-hidden="true"></span>
+      <p class="hero-tagline">Versatile technology solutions to take your<br>organization to the <em>next level.</em></p>
+    </div>
+  </section>
+  <section class="story contact" id="demo">
+    <p class="eyebrow">Schedule a Demo</p>
+    <h1>See your business run smarter.</h1>
+    <p>In a short walkthrough, we'll show you a working app built around a business like yours: one that schedules jobs, keeps customer records up to date, captures receipts and lets your team just talk to it. No pressure and no tech talk, just a look at the time it could give back to your team.</p>
+    <form id="demo-form" class="form" novalidate>
+      <label>Your name<input type="text" id="name" required autocomplete="name"></label>
+      <label>Business name<input type="text" id="business" required autocomplete="organization"></label>
+      <label>Email<input type="email" id="email" required autocomplete="email"></label>
+      <label>Phone<input type="tel" id="phone" autocomplete="tel"></label>
+      <label>Industry<select id="industry"><option value="">Choose one</option><option>Field services / trades</option><option>Construction</option><option>Property management</option><option>Landscaping / tree service</option><option>Professional services</option><option>Retail</option><option>Other</option></select></label>
+      <label>Preferred date<input type="date" id="date"></label>
+      <label>Best time<select id="window"><option value="">Any time</option><option>Morning (8–11 AM)</option><option>Midday (11 AM–2 PM)</option><option>Afternoon (2–5 PM)</option></select></label>
+      <label>What would you like help with?<textarea id="help" rows="4" placeholder="For example: scheduling jobs, tracking expenses, keeping customer records"></textarea></label>
+      <input type="text" id="_hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      <p id="demo-err" class="form-err" role="alert" hidden></p>
+      <button type="submit" id="demo-btn">Schedule My Demo</button>
+    </form>
+    <div id="demo-ok" class="form demo-ok" hidden role="status"><h2>Thank you! Your demo request is in.</h2><p>We'll reach out within one business day to confirm a time that works for you. We look forward to meeting you.</p></div>
+  </section>
+</main>
+<footer>
+  <p class="footer-brand"><strong>VersaNext</strong> · Versatile technology solutions to take your organization to the next level.</p>
+  <p>A division of <a href="https://techsourcedsolutions.com" target="_blank" rel="noopener">Tech Sourced Solutions</a></p>
+</footer>
+<script>
+(function(){var f=document.getElementById('demo-form'),btn=document.getElementById('demo-btn'),err=document.getElementById('demo-err');
+var v=function(i){return document.getElementById(i).value.trim();};
+f.addEventListener('submit',function(e){e.preventDefault();err.hidden=true;
+if(!v('name')||!v('business')||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('email'))){err.textContent='Please add your name, business name and a valid email.';err.hidden=false;return;}
+btn.disabled=true;btn.textContent='Sending...';
+var d={};['name','business','email','phone','industry','date','window','help','_hp'].forEach(function(k){d[k]=v(k);});
+fetch('https://vnxt-demo.tss-receivables.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(){f.hidden=true;document.getElementById('demo-ok').hidden=false;}).catch(function(){btn.disabled=false;btn.textContent='Schedule My Demo';err.innerHTML='Something went wrong. Please try again, or email <a href="mailto:austin@techsourcedsolutions.com">austin@techsourcedsolutions.com</a>.';err.hidden=false;});});})();
+</script>
+</body>
+</html>
