@@ -1,3 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="96" fill="#05070c"/>
-<defs><linearGradient id="bg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#0b4fb3"/><stop offset=".55" stop-color="#1e88ff"/><stop offset="1" stop-color="#6fd0ff"/></linearGradient></defs>
-<g transform="translate(130,120) scale(1.36) skewX(-10)"><polygon fill="#fff" points="0,0 56,0 212,200 156,200"/><polygon fill="url(#bg)" points="160,0 262,0 56,200 0,200"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+<linearGradient id="bg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#0b4fb3"/><stop offset=".55" stop-color="#1e88ff"/><stop offset="1" stop-color="#6fd0ff"/></linearGradient>
+<filter id="gl" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="7" result="b"/><feFlood flood-color="#1e88ff" flood-opacity=".7"/><feComposite in2="b" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="512" height="512" rx="96" fill="#05070c"/>
+<g transform="translate(256,268) scale(1.28) skewX(-10) translate(-108,-100)" filter="url(#gl)">
+<polygon fill="url(#bg)" points="8,0 58,0 208,200 158,200"/>
+<polygon fill="url(#bg)" points="158,0 208,0 58,200 8,200"/>
+</g>
+</svg>
