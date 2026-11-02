@@ -44,7 +44,27 @@
       <label>Industry<select id="industry"><option value="">Choose one</option><option>Field services / trades</option><option>Construction</option><option>Property management</option><option>Landscaping / tree service</option><option>Professional services</option><option>Retail</option><option>Other</option></select></label>
       <label>Preferred date<input type="date" id="date"></label>
       <label>Best time<select id="window"><option value="">Any time</option><option>Morning (8–11 AM)</option><option>Midday (11 AM–2 PM)</option><option>Afternoon (2–5 PM)</option></select></label>
-      <label>What would you like help with?<textarea id="help" rows="4" placeholder="For example: scheduling jobs, tracking expenses, keeping customer records"></textarea></label>
+      <div class="help-field">
+        <span class="help-label" id="help-label">What would you like help with?</span>
+        <div class="help-picker">
+          <button type="button" class="help-toggle" id="help-toggle" aria-expanded="false" aria-controls="help-panel">
+            <span class="help-chips" id="help-chips">Choose any that fit</span>
+            <span class="help-caret" aria-hidden="true"></span>
+          </button>
+          <div class="help-panel" id="help-panel" hidden role="group" aria-labelledby="help-label">
+            <label class="help-choice"><input type="checkbox" value="Make an app"> Make an app</label>
+            <label class="help-choice"><input type="checkbox" value="Schedule jobs / dispatch"> Schedule jobs / dispatch</label>
+            <label class="help-choice"><input type="checkbox" value="Track customers and jobs"> Track customers and jobs</label>
+            <label class="help-choice"><input type="checkbox" value="Capture receipts and expenses"> Capture receipts and expenses</label>
+            <label class="help-choice"><input type="checkbox" value="Voice / talk-to-the-app notes"> Voice / talk-to-the-app notes</label>
+            <label class="help-choice"><input type="checkbox" value="Daily reports for the team"> Daily reports for the team</label>
+            <label class="help-choice"><input type="checkbox" value="One place instead of several tools"> One place instead of several tools</label>
+            <label class="help-choice"><input type="checkbox" id="help-other-check" value="Other"> Other</label>
+          </div>
+        </div>
+        <label class="help-other" id="help-other-wrap" hidden>What else should we cover?<input type="text" id="help-other" maxlength="200" placeholder="A short note is plenty"></label>
+        <input type="hidden" id="help" value="">
+      </div>
       <input type="text" id="_hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
       <p id="demo-err" class="form-err" role="alert" hidden></p>
       <button type="submit" id="demo-btn">Schedule My Demo</button>
@@ -58,8 +78,18 @@
 </footer>
 <script>
 (function(){var f=document.getElementById('demo-form'),btn=document.getElementById('demo-btn'),err=document.getElementById('demo-err');
+var toggle=document.getElementById('help-toggle'),panel=document.getElementById('help-panel'),chips=document.getElementById('help-chips');
+var otherCheck=document.getElementById('help-other-check'),otherWrap=document.getElementById('help-other-wrap');
+function helpParts(){var parts=[];panel.querySelectorAll('input[type=checkbox]:checked').forEach(function(box){if(box.value==='Other'){var extra=document.getElementById('help-other').value.trim();parts.push(extra?('Other: '+extra):'Other');}else parts.push(box.value);});return parts;}
+function syncHelp(){var parts=helpParts();document.getElementById('help').value=parts.join(', ');chips.textContent='';if(!parts.length){chips.textContent='Choose any that fit';return;}parts.forEach(function(item){var chip=document.createElement('span');chip.className='help-chip';chip.textContent=item;chips.appendChild(chip);});}
+function setOpen(open){panel.hidden=!open;toggle.setAttribute('aria-expanded',open?'true':'false');}
+toggle.addEventListener('click',function(){setOpen(panel.hidden);});
+panel.addEventListener('change',function(){otherWrap.hidden=!otherCheck.checked;if(!otherCheck.checked)document.getElementById('help-other').value='';syncHelp();});
+document.getElementById('help-other').addEventListener('input',syncHelp);
+document.addEventListener('click',function(e){if(!toggle.contains(e.target)&&!panel.contains(e.target))setOpen(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
 var v=function(i){return document.getElementById(i).value.trim();};
-f.addEventListener('submit',function(e){e.preventDefault();err.hidden=true;
+f.addEventListener('submit',function(e){e.preventDefault();err.hidden=true;syncHelp();
 if(!v('name')||!v('business')||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('email'))){err.textContent='Please add your name, business name and a valid email.';err.hidden=false;return;}
 btn.disabled=true;btn.textContent='Sending...';
 var d={};['name','business','email','phone','industry','date','window','help','_hp'].forEach(function(k){d[k]=v(k);});
