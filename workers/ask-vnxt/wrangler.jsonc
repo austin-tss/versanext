@@ -1,0 +1,28 @@
+{
+  // Ask VNXT. The site posts here from assets/ask-vnxt.js (ASK_VNXT_API).
+  // Expected public URL on Austin's account: https://vnxt-ask.austin6stinson.workers.dev
+  // If the workers.dev subdomain is different, update ASK_VNXT_API to match.
+  //
+  // Secret (do not commit a key):
+  //   npx wrangler secret put GEMINI_API_KEY
+  // Then:
+  //   npx wrangler deploy
+  // GEMINI_MODEL is not secret. Change it here if Google retires the default.
+  "name": "vnxt-ask",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-02",
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01
+    }
+  },
+  "vars": {
+    "GEMINI_MODEL": "gemini-2.5-flash"
+  }
+}
