@@ -7,7 +7,7 @@
   //   npx wrangler secret put GEMINI_API_KEY
   // Then:
   //   npx wrangler deploy
-  // GEMINI_MODEL is not secret. Change it here if Google retires the default.
+  // GEMINI_MODEL is not secret. Default is gemini-flash-latest. Change it here to pin another model.
   "name": "vnxt-ask",
   "main": "src/index.js",
   "compatibility_date": "2026-11-02",
@@ -23,6 +23,6 @@
     }
   },
   "vars": {
-    "GEMINI_MODEL": "gemini-2.5-flash"
+    "GEMINI_MODEL": "gemini-flash-latest"
   }
 }

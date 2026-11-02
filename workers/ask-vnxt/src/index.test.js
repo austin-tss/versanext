@@ -94,9 +94,35 @@ test("calls Gemini with the secret in a header and a VersaNext system prompt", a
     assert.equal(captured.init.headers["x-goog-api-key"], "test-secret-not-real");
     const sent = JSON.parse(captured.init.body);
     assert.match(sent.systemInstruction.parts[0].text, /2915 Kerry Forest Parkway/);
-    assert.match(sent.systemInstruction.parts[0].text, /not the owner|Do not describe Austin Stinson as the owner/);
+    assert.match(sent.systemInstruction.parts[0].text, /not the owner|Do not describe Austin Stinson as the owner|Do not call Austin the owner/);
+    assert.match(sent.systemInstruction.parts[0].text, /\$110\/hour/);
+    assert.match(sent.systemInstruction.parts[0].text, /VNXT was founded/);
+    assert.match(sent.systemInstruction.parts[0].text, /draft suggestions only/);
     assert.equal(sent.contents[0].role, "user");
     assert.equal(sent.contents[0].parts[0].text, "What is your address?");
+  } finally {
+    globalThis.fetch = original;
+  }
+});
+
+test("falls back to gemini-flash-latest when no model is set", async () => {
+  resetRateLimitForTests();
+  const original = globalThis.fetch;
+  let capturedUrl = "";
+  globalThis.fetch = async (url) => {
+    capturedUrl = String(url);
+    return new Response(JSON.stringify({
+      candidates: [{ content: { parts: [{ text: "OK" }] } }],
+    }), { status: 200, headers: { "Content-Type": "application/json" } });
+  };
+  try {
+    const response = await worker.fetch(new Request("https://vnxt-ask.example/ask", {
+      method: "POST",
+      headers: { Origin: "https://vnxt.app", "Content-Type": "application/json", "CF-Connecting-IP": "198.51.100.22" },
+      body: JSON.stringify({ messages: [{ role: "user", content: "What is VersaNext?" }] }),
+    }), { GEMINI_API_KEY: "test-secret-not-real" });
+    assert.equal(response.status, 200);
+    assert.match(capturedUrl, /models\/gemini-flash-latest:generateContent$/);
   } finally {
     globalThis.fetch = original;
   }
