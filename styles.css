@@ -86,6 +86,7 @@ footer{background:linear-gradient(180deg,#0b1220,#05070a)}
 .form select{font:inherit;font-family:'Rubik',sans-serif;font-size:1rem;padding:12px 14px;border:1px solid #c9d2df;border-radius:4px;background:#fff;color:var(--black);width:100%}
 .form-err{color:#b00020;margin:0;font-size:.95rem}
 .demo-ok{margin-top:32px;text-align:left}.demo-ok h2{margin:0 0 8px;color:#0b4fb3}
+#demo-form[hidden],#demo-ok[hidden],#demo-err[hidden]{display:none}
 
 /* Ask VNXT */
 .ask-vnxt{position:fixed;left:max(16px,env(safe-area-inset-left));bottom:max(16px,env(safe-area-inset-bottom));z-index:40;font-family:Rubik,system-ui,sans-serif}
@@ -119,3 +120,22 @@ footer{background:linear-gradient(180deg,#0b1220,#05070a)}
 @media(max-width:600px){.ask-panel{height:min(70vh,520px)}}
 footer{padding-bottom:96px}
 @media print{.ask-vnxt{display:none}}
+
+/* Demo: what would you like help with */
+.help-field{display:grid;gap:8px}
+.help-label{font-family:Poppins,sans-serif;font-weight:500;font-size:.85rem;color:var(--black)}
+.help-picker{position:relative}
+.form button.help-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;background:#fff;color:var(--black);font-family:Rubik,sans-serif;font-weight:400;font-size:1rem;padding:10px 14px;border:1px solid #c9d2df;border-radius:4px;min-height:48px;justify-self:stretch}
+.form button.help-toggle:hover{background:#fff;color:var(--black)}
+.form button.help-toggle:focus-visible{outline:2px solid var(--blue-light);outline-offset:2px}
+.help-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.help-chips:empty,.help-toggle .help-chips{color:#555d66}
+.help-chip{color:#0b0d10;background:#f5f9ff;border:1px solid #1e88ff;border-radius:999px;padding:2px 10px;font-size:.85rem;line-height:1.4}
+.help-caret{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #1e88ff;flex:none}
+.help-panel{background:#fff;border:1px solid #dfe5ee;border-top:4px solid #1e88ff;border-radius:6px;box-shadow:0 12px 30px rgba(10,79,196,.12);padding:6px 8px}
+.help-panel[hidden]{display:none}
+.form label.help-choice{display:flex;align-items:center;gap:10px;font-family:Rubik,sans-serif;font-weight:400;font-size:1rem;padding:8px 6px;border-radius:4px;cursor:pointer}
+.form label.help-choice:hover{background:#f5f9ff}
+.form label.help-choice input{width:18px;height:18px;padding:0;margin:0;accent-color:#1e88ff;flex:none}
+.form label.help-other{display:grid}
+.form label.help-other[hidden]{display:none}
