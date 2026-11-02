@@ -1,13 +1,13 @@
 {
   // Ask VNXT. The site posts here from assets/ask-vnxt.js (ASK_VNXT_API).
-  // Public URL: https://vnxt-ask.tss-receivables.workers.dev
-  // If the workers.dev subdomain changes, update ASK_VNXT_API in assets/ask-vnxt.js to match.
+  // Live chat URL (ASK_VNXT_API): https://vnxt-gemini.tss-receivables.workers.dev
+  // vnxt-gemini serves Ask VNXT and CRM voice. This package is the vnxt-ask prompt source.
   //
   // Secret (do not commit a key):
   //   npx wrangler secret put GEMINI_API_KEY
   // Then:
   //   npx wrangler deploy
-  // GEMINI_MODEL is not secret. Change it here if Google retires the default.
+  // GEMINI_MODEL is not secret. Default is gemini-flash-latest. Change it here to pin another model.
   "name": "vnxt-ask",
   "main": "src/index.js",
   "compatibility_date": "2026-11-02",
@@ -23,6 +23,6 @@
     }
   },
   "vars": {
-    "GEMINI_MODEL": "gemini-2.5-flash"
+    "GEMINI_MODEL": "gemini-flash-latest"
   }
 }
