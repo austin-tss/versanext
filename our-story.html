@@ -12,38 +12,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Rubik:ital,wght@0,400;0,500;1,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-.sec-hero{background:#000;color:#fff;width:calc(100% + 48px);margin:0 -24px;padding:48px 24px 56px;text-align:center}
-.sec-hero .brand{width:min(300px,72%);height:auto;display:block;margin:0 auto 32px}
-.hero-split{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:minmax(240px,420px) minmax(0,1fr);gap:44px;align-items:center;text-align:left}
-.hero-photo{max-width:420px;margin:0 auto}
-.hero-photo img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 0 0 1px rgba(111,208,255,.45),0 22px 50px rgba(0,0,0,.55)}
-.hero-kicker{font-family:Poppins,sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:#6fd0ff;margin:0 0 12px}
-.sec-hero h1{color:#fff;margin:0 0 16px;text-align:left}
-.sec-hero .lead{color:#cfd8e6;font-size:1.12rem;margin:0}
+.sec-hero{background:#000;color:#fff;width:calc(100% + 48px);margin:0 -24px;padding:36px 24px 40px;text-align:center}
+.sec-hero .brand{width:min(300px,72%);height:auto;display:block;margin:0 auto}
 .sec-bar{height:5px;width:calc(100% + 48px);margin:0 -24px;background:linear-gradient(90deg,#0b4fb3,#1e88ff,#6fd0ff)}
-.story-body{max-width:740px;width:100%;padding:56px 0 80px;text-align:left}
-.story-body h2{font-family:Poppins,sans-serif;font-weight:600;font-size:1.55rem;line-height:1.25;color:#0b0d10;margin:42px 0 12px}
-.story-body h2::before{content:"";display:block;width:44px;height:4px;border-radius:2px;background:linear-gradient(90deg,#0b4fb3,#1e88ff,#6fd0ff);margin:0 0 14px}
+.story-split{max-width:1080px;width:100%;margin:0 auto;padding:56px 0 80px;display:grid;grid-template-columns:minmax(220px,380px) minmax(0,1fr);gap:48px;align-items:start;text-align:left}
+.hero-photo{margin:0}
+.hero-photo img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 0 0 1px rgba(30,136,255,.28),0 18px 40px rgba(11,13,16,.12)}
+.story-body{max-width:none;width:100%;padding:0;text-align:left}
+.story-body h1{margin:0 0 22px}
 .story-body p{color:#3a4350;font-size:1.08rem;margin:0 0 16px}
-.story-body a:not(.hero-cta){color:#1e88ff;font-weight:500}
-.story-body a:not(.hero-cta):hover{text-decoration:underline}
-.story-actions .hero-cta{color:#fff;margin-top:0}
-.promise{font-family:Poppins,sans-serif;font-weight:500;color:#0b0d10;font-size:1.2rem;line-height:1.45;margin-top:36px}
-.signoff{font-family:Poppins,sans-serif;font-weight:600;color:#0b0d10;margin:22px 0 0}
-.where{color:#0b0d10;font-family:Poppins,sans-serif;font-weight:500;font-size:1rem}
-.promise em{color:#1e88ff;font-style:italic;font-weight:800}
-.local-card{background:#f5f9ff;border-left:4px solid #1e88ff;border-radius:8px;padding:20px 22px;margin:8px 0 28px}
-.local-card address{font-style:normal;font-family:Poppins,sans-serif;font-weight:500;color:#0b0d10;line-height:1.55;margin-top:8px}
-.story-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px 22px;margin-top:8px}
-.story-actions .text-link{font-family:Poppins,sans-serif;font-weight:600;color:#1e88ff;text-decoration:none}
-.story-actions .text-link:hover{text-decoration:underline}
 @media(max-width:800px){
-  .hero-split{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px}
-  .hero-copy{display:contents}
-  .hero-kicker{order:1;width:100%}
-  .sec-hero h1{order:2;width:100%;text-align:center}
-  .hero-photo{order:3;width:min(440px,100%)}
-  .sec-hero .lead{order:4;width:100%;text-align:center}
+  .story-split{display:flex;flex-direction:column;gap:28px;padding:40px 0 64px}
+  .hero-photo{width:min(420px,100%);margin:0 auto}
+  .story-body{text-align:left}
 }
 </style>
 </head>
@@ -62,17 +43,19 @@
 <main>
   <section class="sec-hero">
     <img class="brand" src="assets/logo-dark.png" alt="VersaNext (VNXT)" width="1060" height="392">
+  </section>
+  <div class="sec-bar" aria-hidden="true"></div>
+  <section class="story-split">
     <figure class="hero-photo">
       <img src="assets/our-story-hero.jpg" alt="Austin Stinson with his family" width="864" height="1152">
     </figure>
+    <article class="story-body">
+      <h1>Software should work for the business</h1>
+      <p>Hi, my name is Austin Stinson from Tallahassee, FL. I am the founder of VersaNext. VNXT was founded because I kept finding that my business, Tech Sourced Solutions, had to operate out of multiple different software tools, which caused many inefficiencies. I kept researching solutions that would let my employees work in one system and run more smoothly. I could not find anything. After building an application customized around my business, it became clear that every small business should have software built specifically for them. VersaNext builds custom software solutions with AI integration that help your business operate more efficiently so you can focus on the things that matter.</p>
+      <p>Versatile technology solutions that take your business to the next level.</p>
+      <p>-Austin Stinson, Founder</p>
+    </article>
   </section>
-  <div class="sec-bar" aria-hidden="true"></div>
-  <article class="story-body">
-    <h1>Software should work for the business</h1>
-    <p>Hi, my name is Austin Stinson from Tallahassee, FL. I am the founder of VersaNext. VNXT was founded because I kept finding that my business, Tech Sourced Solutions, had to operate out of multiple different software tools, which caused many inefficiencies. I kept researching solutions that would let my employees work in one system and run more smoothly. I could not find anything. After building an application customized around my business, it became clear that every small business should have software built specifically for them. VersaNext builds custom software solutions with AI integration that help your business operate more efficiently so you can focus on the things that matter.</p>
-    <p>Versatile technology solutions that take your business to the next level.</p>
-    <p>-Austin Stinson, Founder</p>
-  </article>
 </main>
 <footer>
   <p class="footer-brand"><strong>VersaNext</strong> · Versatile technology solutions to take your organization to the next level.</p>
