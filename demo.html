@@ -97,6 +97,6 @@ var save=fetch('https://vnxt-demo.tss-receivables.workers.dev',{method:'POST',he
 var mail=d._hp?Promise.resolve(1):fetch('https://formsubmit.co/ajax/f30ebd01b740b6f3da43f6625f95f6db',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'VersaNext demo request: '+d.business+' ('+d.name+')',_template:'table',_captcha:'false',_replyto:d.email,Name:d.name,Business:d.business,Email:d.email,Phone:d.phone,Industry:d.industry,'Preferred date':d.date,'Time window':d.window,'Help with':d.help})}).then(function(r){return r.json();}).then(function(j){if(String(j.success)!=='true')throw 0;return 1;});
 Promise.allSettled([save,mail]).then(function(r){if(r[0].status!=='fulfilled'&&r[1].status!=='fulfilled')throw 0;}).then(function(){f.hidden=true;document.getElementById('demo-ok').hidden=false;}).catch(function(){btn.disabled=false;btn.textContent='Schedule My Demo';err.innerHTML='Something went wrong. Please try again, or email <a href="mailto:austin@techsourcedsolutions.com">austin@techsourcedsolutions.com</a>.';err.hidden=false;});});})();
 </script>
-<script src="assets/ask-vnxt.js" defer></script>
+<script src="assets/ask-vnxt.js?v=20261102" defer></script>
 </body>
 </html>
