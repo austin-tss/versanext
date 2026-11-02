@@ -1,5 +1,5 @@
 /* Ask VNXT. Gemini is called only by the Worker. Do not put an API key here. */
-var ASK_VNXT_API = "https://vnxt-ask.austin6stinson.workers.dev";
+var ASK_VNXT_API = "https://vnxt-ask.tss-receivables.workers.dev";
 
 (function () {
   var GREETING = "Hey, what can I help you with?";
