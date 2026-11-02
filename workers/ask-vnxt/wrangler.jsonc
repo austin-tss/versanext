@@ -1,7 +1,7 @@
 {
   // Ask VNXT. The site posts here from assets/ask-vnxt.js (ASK_VNXT_API).
-  // Expected public URL on Austin's account: https://vnxt-ask.austin6stinson.workers.dev
-  // If the workers.dev subdomain is different, update ASK_VNXT_API to match.
+  // Public URL: https://vnxt-ask.tss-receivables.workers.dev
+  // If the workers.dev subdomain changes, update ASK_VNXT_API in assets/ask-vnxt.js to match.
   //
   // Secret (do not commit a key):
   //   npx wrangler secret put GEMINI_API_KEY
